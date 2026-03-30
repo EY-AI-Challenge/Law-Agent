@@ -46,7 +46,7 @@ Each PDF contains the full legal text of a specific law or consolidation, and ma
 
 ## 📦 Deliverables
 
-- ✅ A working prototype of your strategic conversational assistant
+- ✅ A working prototype of your solution
 - ✅ Organized and well-documented code, that can be reproducible
 - ✅ A strategic presentation pitching your solution to the judging panel as if they were the client's executive stakeholders
 - ✅ A technical presentation pitching your solution to the judging panel as if they were the client's IT stakeholders
