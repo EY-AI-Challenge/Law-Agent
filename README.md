@@ -13,10 +13,12 @@ In Portugal, as in many countries, legal documents such as **laws, codes**, and 
 
 These legal documents often reference each other or other laws, creating **"clusters"** of interrelated legislation. Your goal is to uncover, visualize, and analyze these relationships strategically.
 
-### **Objective**  
-Design a solution that identifies and maps the connections between legal documents based on how they cite or refer to one another. For example, if **Lei nº 1** refers to **Lei nº 33**, this implies a legal or conceptual dependency that can be mapped.
+🎯 **Objective:**    
+Design a solution that identifies, extracts, and maps the relationships between legal documents based on how they reference or cite one another. For example, if Lei nº 1 refers to Lei nº 33, this establishes a legal or conceptual dependency that can be represented as part of a broader network.
 
-You'll use a combination of text processing, information extraction, and relationship mapping to construct a meaningful representation of these links. Your final solution should enable exploration, analysis, or visual storytelling of how Portuguese laws interconnect, providing strategic insights that transform raw legal text into actionable intelligence.
+Leverage techniques such as text processing, information extraction, and graph-based modeling (e.g., GraphRAG) to build a structured representation of these connections.
+
+Your final solution should include a virtual assistant capable of querying this network using natural language. The system should enable users to explore, analyze, and understand how Portuguese laws are interconnected -transforming complex legal text into accessible, actionable insights through graph exploration, analysis, or visual storytelling.
 
 ---
 
