@@ -24,7 +24,7 @@ Your final solution should include a virtual assistant capable of querying this 
 
 ## 📂 Data
 
-You should consider as your dataset the PDFs documents from Diário da República, containing either information about Decree-Law (Decreto de Lei) or Law Consolidation (Artigo de Lei). These 
+You should consider as your dataset the PDFs documents from Diário da República, containing either information about Decree-Law (Decreto de Lei) or Law Consolidation (Artigo de Lei).
 
 - **Data source** - https://diariodarepublica.pt/dr/legislacao-por-tema
 
