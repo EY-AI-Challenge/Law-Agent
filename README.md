@@ -24,10 +24,9 @@ Your final solution should include a virtual assistant capable of querying this 
 
 ## 📂 Data
 
-The provided dataset consists of 20 PDF documents, each containing either a Decree-Law (Decreto de Lei) or a Law Consolidation (Artigo de Lei). These documents are divided into the two major pillars of Portuguese law mentioned earlier:
+You should consider as your dataset the PDFs documents from Diário da República, containing either information about Decree-Law (Decreto de Lei) or Law Consolidation (Artigo de Lei). These 
 
-- **10 documents related to the Labour Code** (ranging from 1 to 102 pages).
-- **10 documents related to the Civil Code** (ranging from 3 to 42 pages).
+- **Data source** - https://diariodarepublica.pt/dr/legislacao-por-tema
 
 Each PDF contains the full legal text of a specific law or consolidation, and may include references, citations, or mentions to other legal documents within the dataset. 
 
@@ -41,30 +40,28 @@ Each PDF contains the full legal text of a specific law or consolidation, and ma
 - **Use language models** (e.g., embeddings or heuristics) to detect **implicit references**.
 - **Cluster or color-code** laws based on origin (Código do Trabalho vs Código Civil).
 - **Suggest potential inconsistencies** or areas of interest for legal professionals or policymakers.
-- Provide a UI, query interface, or dashboard to explore the connections (optional but encouraged).
+- Provide a UI, query interface, or dashboard to explore the connections.
 
 ---
 
-## 🎯 Deliverables
+## 📦 Deliverables
 
-- ✅ A **working prototype** or concept that maps interconnections between the laws.
-- ✅ An **organized and well-documented code** that is reproducible.
-- ✅ A **short presentation** to pitch your solution as if to potential clients.
-- ✅ (Optional) It’s a major plus if your presentation includes a brief live demo to showcase how the solution works in practice, you can even present over it.
-- *(Optional)* **Visualizations**, interactive tools, or insights that provide additional analysis.
+- ✅ A working prototype of your strategic conversational assistant
+- ✅ Organized and well-documented code, that can be reproducible
+- ✅ A strategic presentation pitching your solution to the judging panel as if they were the client's executive stakeholders
+- ✅ A technical presentation pitching your solution to the judging panel as if they were the client's IT stakeholders
+- ✅ A frontend for the solution is mandatory for the live demo of the strategic presentation
+
+🔹 **Optional Enhancements**:  
+- Performance analysis vs traditional knowledge access methods
 
 <h2 align="center"> ⚠️ **Important Submission Requirement** ⚠️ </h2>
 <h3> ✅ Before the 14h00 deadline</h3>
 
-Submit a zip folder with:
-- The **Google Colab notebook** (with all cells run & outputs shown).
-- Screenshots of all **external tools/visualizations** used.
-
-Submit via email to: [eyaichallenge@pt.ey.com](mailto:eyaichallenge@pt.ey.com)
-
-Subject: `Law Document Mapping – GroupName`
-
-Include group member names in the email.
+Submit you solution to your specific branch:
+- Repository with the code of the solution developed
+  - The solution must be ready to run
+- A README file with the context of the solution and how to run it
 
 
 ---
@@ -82,7 +79,7 @@ We are looking for teams who think strategically:
 
 ## 🧠 Tips for Competitors
 
-- **Choose Your Language Model (LLM) Wisely**: Consider **Gemini** (fast but with context limits) vs **LLaMA** (slower, but handles more context). Each have trade-offs. Choose based on your solution's priorities and feel free to explore other options.
+- **Choose Your Language Model (LLM) Wisely**
 - **Explore the Data**: Understand the structure of **Portuguese laws** (e.g., article numbers, cross-law citations).
 - **Design the Pipeline**: How do you go from raw **legal text** (PDFs, HTML, etc.) to structured, explorable knowledge?
 - **Be Open**: Focus on citations, text similarity, semantic relationships, keyword overlap, or anything else revealing meaningful links.
@@ -93,41 +90,41 @@ We are looking for teams who think strategically:
 
 ---
 
-## 🛠 Tech & Tools – You Have Full Freedom
+## 🛠️ Tech & Tools
 
-It is mandatory to develop the solution in **Google Colab using Python**.
-Other than that, you are completely free to choose your own:
+- **Mandatory:**  
+  - Solution must be developed mainly using Python  
+  - You'll publish the solution into a specific branch of the challenge's repository
 
-- **Libraries and packages**: Use any tool you need (e.g., Pandas, Scikit-learn, LangChain, etc.)
-- **Visualization tools**: Python-based tools (Matplotlib, Seaborn), Power BI, Tableau, etc.
-- **AI assistants**: Feel free to consult ChatGPT, GitHub Copilot, Gemini, or any other. 
-
----
-
-## ⏱ Time Management & Rules
-
-- ⏳ You have **4 hours total** to complete your challenge  
-  🔒 **No extensions** will be allowed
-
-- 🗣 After the working session, deliver a **5-minute presentation**  
-  🎯 Simulate a **client-facing consulting pitch**
-
-- 👥 Each group is allowed:
-  - `1` **technical support** session (up to 5 minutes)
-  - `1` **business-related support** session (up to 5 minutes)
-
-> 🧠 Assistants will guide your thinking, not provide direct solutions
+- **Free to Choose:**  
+  - Libraries/Packages
+  - Visualization
+  - Frontend solution
+  - AI Assistants
 
 ---
 
-## 🧑‍💼 Strategy & Workflow Tips
+## ⏱️ Time Management & Rules
 
-- **Assign Roles Early**: e.g., a data person, a business analyst, and a presenter. 
-- **Work in Parallel**: Don’t wait on each other. Split tasks and collaborate strategically.
-- **Prepare for the Presentation**: Start preparing early; don’t leave it to the last 10 minutes.
-- **Be Realistic**: It’s better to deliver a focused, clear, and well-explained solution than a rushed or overly complex one.
+- Total Time: **4 hours** – No extensions  
+- Final Presentations: **5 minutes each** – Simulate a client-facing pitch
+  - You must divide the team for the strategic and technical presentations
+- Support:
+  - 🧑‍💻 1 technical session (max 5 minutes)  
+  - 💼 1 business session (max 5 minutes)  
+  - **Note:** Assistants guide only — no direct solutions
 
-💡 **Pro Tip**: You are not being judged only on technical accuracy, but also on how you think, structure, work as a team and communicate your approach.
+---
+
+## 📋 Strategy & Workflow Tips
+
+1. **Assign Roles Early** — e.g., data analyst, business strategist, presenter  
+2. **Work in Parallel** — Divide and conquer  
+3. **Start the Presentation Early** — Don’t wait until the last 10 minutes  
+4. **Be Realistic** — Focused and clear beats complex and incomplete  
+
+💡 **Pro Tip:**  
+Judging includes **teamwork**, **structure**, and **communication**, not just technical quality
 
 ---
 
