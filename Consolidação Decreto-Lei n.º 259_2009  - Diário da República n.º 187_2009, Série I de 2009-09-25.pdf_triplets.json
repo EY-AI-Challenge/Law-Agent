@@ -1,0 +1,57 @@
+[
+    {
+        "source": "Artigo 1.º do Consolidação Decreto-Lei n.º 259_2009  - Diário da República n.º 187_2009, Série I de 2009-09-25",
+        "relationship": "CITA",
+        "target": "artigo 513.º do Código do Trabalho"
+    },
+    {
+        "source": "Artigo 1.º do Consolidação Decreto-Lei n.º 259_2009  - Diário da República n.º 187_2009, Série I de 2009-09-25",
+        "relationship": "CITA",
+        "target": "alínea b) do n.º 4 do artigo 538.º do Código do Trabalho"
+    },
+    {
+        "source": "Artigo 5.º do Consolidação Decreto-Lei n.º 259_2009  - Diário da República n.º 187_2009, Série I de 2009-09-25",
+        "relationship": "CITA",
+        "target": "n.º 1 do artigo anterior"
+    },
+    {
+        "source": "Artigo 5.º do Consolidação Decreto-Lei n.º 259_2009  - Diário da República n.º 187_2009, Série I de 2009-09-25",
+        "relationship": "CITA",
+        "target": "n.º 3 do artigo anterior"
+    },
+    {
+        "source": "Artigo 5.º do Consolidação Decreto-Lei n.º 259_2009  - Diário da República n.º 187_2009, Série I de 2009-09-25",
+        "relationship": "CITA",
+        "target": "artigo 3.º"
+    },
+    {
+        "source": "Artigo 5.º do Consolidação Decreto-Lei n.º 259_2009  - Diário da República n.º 187_2009, Série I de 2009-09-25",
+        "relationship": "CITA",
+        "target": "n.os 3 e 4 do artigo 2.º"
+    },
+    {
+        "source": "Artigo 7.º do Consolidação Decreto-Lei n.º 259_2009  - Diário da República n.º 187_2009, Série I de 2009-09-25",
+        "relationship": "CITA",
+        "target": "artigo 5.º"
+    },
+    {
+        "source": "Artigo 7.º do Consolidação Decreto-Lei n.º 259_2009  - Diário da República n.º 187_2009, Série I de 2009-09-25",
+        "relationship": "CITA",
+        "target": "artigo 4.º"
+    },
+    {
+        "source": "Artigo 8.º do Consolidação Decreto-Lei n.º 259_2009  - Diário da República n.º 187_2009, Série I de 2009-09-25",
+        "relationship": "CITA",
+        "target": "artigo anterior"
+    },
+    {
+        "source": "Artigo 9.º do Consolidação Decreto-Lei n.º 259_2009  - Diário da República n.º 187_2009, Série I de 2009-09-25",
+        "relationship": "APLICA-SE SUBSIDIARIAMENTE",
+        "target": "Código de Processo Civil"
+    },
+    {
+        "source": "Artigo 9.º do Consolidação Decreto-Lei n.º 259_2009  - Diário da República n.º 187_2009, Série I de 2009-09-25",
+        "relationship": "APLICA-SE",
+        "target": "n.º 4 do artigo 4.º"
+    }
+]
