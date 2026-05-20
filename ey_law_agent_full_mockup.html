@@ -1,0 +1,392 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+.app{font-family:var(--font-sans);background:#1A1A24;border-radius:12px;overflow:hidden;border:0.5px solid #333;}
+.navbar{background:#2E2E38;height:48px;display:flex;align-items:center;padding:0 20px;gap:0;border-bottom:0.5px solid #444;}
+.nav-logo{display:flex;align-items:center;gap:8px;margin-right:28px;}
+.ey-sq{width:22px;height:22px;background:#FFE600;transform:rotate(45deg);border-radius:2px;flex-shrink:0;}
+.nav-brand{color:#fff;font-size:13px;font-weight:500;line-height:1.2;}
+.nav-sub{color:#888;font-size:10px;}
+.nav-links{display:flex;gap:0;flex:1;}
+.nl{color:#B0AFBA;font-size:12px;padding:0 14px;height:48px;display:flex;align-items:center;cursor:pointer;border-bottom:2px solid transparent;}
+.nl.active{color:#FFE600;border-bottom:2px solid #FFE600;}
+.nl:hover{color:#fff;}
+.nav-right{display:flex;align-items:center;gap:12px;margin-left:auto;}
+.nav-icon{color:#888;font-size:16px;cursor:pointer;}
+.subnav{background:#23232F;height:36px;display:flex;align-items:center;padding:0 20px;gap:4px;border-bottom:0.5px solid #333;}
+.sn{color:#B0AFBA;font-size:12px;padding:0 12px;height:36px;display:flex;align-items:center;cursor:pointer;border-bottom:2px solid transparent;}
+.sn.active{color:#FFE600;border-bottom:2px solid #FFE600;}
+.toolbar{background:#1E1E2A;height:44px;display:flex;align-items:center;padding:0 16px;gap:8px;border-bottom:0.5px solid #333;}
+.search-wrap{display:flex;align-items:center;background:#2A2A36;border:0.5px solid #444;border-radius:6px;padding:0 10px;gap:6px;height:28px;flex:0 0 220px;}
+.search-wrap input{background:none;border:none;outline:none;color:#fff;font-size:12px;width:100%;}
+.search-wrap input::placeholder{color:#666;}
+.search-wrap i{color:#666;font-size:14px;}
+.filter-btn{background:#2A2A36;border:0.5px solid #444;border-radius:6px;padding:4px 10px;color:#B0AFBA;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:4px;height:28px;}
+.filter-btn.on{border-color:#FFE600;color:#FFE600;}
+.filter-btn i{font-size:13px;}
+.sep{width:0.5px;background:#333;height:20px;margin:0 4px;}
+.tool-btn{background:none;border:0.5px solid #333;border-radius:6px;padding:4px 8px;color:#888;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:4px;height:28px;}
+.tool-btn:hover{border-color:#666;color:#ccc;}
+.tool-btn i{font-size:14px;}
+.main-area{display:flex;height:580px;}
+.graph-panel{flex:1;position:relative;background:#12121A;overflow:hidden;}
+.graph-canvas{width:100%;height:100%;}
+.stats-bar{position:absolute;top:12px;left:12px;display:flex;gap:8px;}
+.stat-pill{background:#1E1E2A;border:0.5px solid #333;border-radius:20px;padding:5px 12px;display:flex;align-items:center;gap:6px;}
+.stat-num{color:#FFE600;font-size:13px;font-weight:500;}
+.stat-lbl{color:#888;font-size:11px;}
+.legend{position:absolute;bottom:12px;left:12px;background:#1E1E2A;border:0.5px solid #333;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;}
+.leg-row{display:flex;align-items:center;gap:7px;font-size:11px;color:#999;}
+.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.zoom-ctrl{position:absolute;bottom:12px;right:12px;display:flex;flex-direction:column;gap:4px;}
+.z-btn{background:#1E1E2A;border:0.5px solid #333;border-radius:6px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#888;font-size:14px;}
+.z-btn:hover{border-color:#FFE600;color:#FFE600;}
+.right-panel{width:260px;background:#1A1A24;border-left:0.5px solid #333;display:flex;flex-direction:column;}
+.rp-header{padding:12px 14px;border-bottom:0.5px solid #333;display:flex;align-items:center;justify-content:space-between;}
+.rp-title{color:#fff;font-size:13px;font-weight:500;display:flex;align-items:center;gap:7px;}
+.rp-title i{color:#FFE600;font-size:15px;}
+.ai-badge{background:#FFE600;color:#1A1A24;font-size:10px;padding:2px 7px;border-radius:20px;font-weight:500;}
+.chat-messages{flex:1;padding:12px;display:flex;flex-direction:column;gap:8px;overflow:auto;max-height:420px;}
+.msg-bot{background:#23232F;border:0.5px solid #333;border-radius:10px 10px 10px 2px;padding:9px 11px;font-size:12px;color:#D0CFD8;line-height:1.5;max-width:95%;}
+.msg-user{background:#3A3500;border:0.5px solid #6B6200;border-radius:10px 10px 2px 10px;padding:9px 11px;font-size:12px;color:#FFE600;line-height:1.5;align-self:flex-end;max-width:95%;}
+.msg-highlight{background:#1E2A1E;border:0.5px solid #2A5A2A;border-radius:6px;padding:6px 8px;margin-top:6px;font-size:11px;color:#7EC87E;}
+.chat-input-area{padding:10px 12px;border-top:0.5px solid #333;}
+.chat-row{display:flex;gap:6px;align-items:center;}
+.chat-row input{flex:1;background:#23232F;border:0.5px solid #444;border-radius:6px;padding:7px 10px;color:#fff;font-size:12px;outline:none;}
+.chat-row input::placeholder{color:#555;}
+.send-btn{background:#FFE600;border:none;border-radius:6px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#1A1A24;font-size:14px;flex-shrink:0;}
+.quick-btns{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px;}
+.qb{background:none;border:0.5px solid #444;border-radius:20px;padding:3px 9px;color:#888;font-size:10px;cursor:pointer;}
+.qb:hover{border-color:#FFE600;color:#FFE600;}
+.node-popup{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);background:#1E1E2A;border:0.5px solid #FFE600;border-radius:10px;padding:14px 16px;width:200px;display:none;}
+.popup-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.popup-title{color:#FFE600;font-size:13px;font-weight:500;}
+.popup-close{color:#666;font-size:16px;cursor:pointer;}
+.popup-body{font-size:11px;color:#B0AFBA;line-height:1.6;}
+.popup-stat{display:flex;justify-content:space-between;margin-top:6px;padding-top:6px;border-top:0.5px solid #333;}
+.popup-stat-val{color:#FFE600;font-weight:500;}
+.popup-action{margin-top:10px;background:#FFE600;color:#1A1A24;font-size:11px;font-weight:500;border:none;border-radius:6px;padding:6px 12px;cursor:pointer;width:100%;}
+</style>
+
+<h2 class="sr-only">EY Law Agent — interactive legal network explorer with citation graph, cluster filters, search, and AI assistant panel</h2>
+
+<div class="app">
+
+  <div class="navbar">
+    <div class="nav-logo">
+      <div class="ey-sq"></div>
+      <div>
+        <div class="nav-brand">Law Agent</div>
+        <div class="nav-sub">Shape the future with confidence</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <div class="nl active">Insights</div>
+      <div class="nl">Serviços</div>
+      <div class="nl">Indústrias</div>
+      <div class="nl">Carreiras</div>
+      <div class="nl">Sobre nós</div>
+    </div>
+    <div class="nav-right">
+      <i class="ti ti-search nav-icon" aria-hidden="true"></i>
+      <i class="ti ti-user nav-icon" aria-hidden="true"></i>
+      <span style="color:#888;font-size:11px;display:flex;align-items:center;gap:4px;"><i class="ti ti-world" style="font-size:13px" aria-hidden="true"></i>Portugal</span>
+    </div>
+  </div>
+
+  <div class="subnav">
+    <div class="sn active">Código do Trabalho</div>
+    <div class="sn">Código Civil</div>
+    <div class="sn">AI Assistant</div>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:6px;">
+      <span style="font-size:11px;color:#555;">Law Statistics</span>
+      <div style="width:6px;height:6px;background:#FFE600;border-radius:50%;"></div>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <div class="search-wrap">
+      <i class="ti ti-search" aria-hidden="true"></i>
+      <input type="text" placeholder="Pesquisar artigo ou lei..." id="searchInput" />
+    </div>
+    <div class="sep"></div>
+    <div class="filter-btn on" id="f-ct" onclick="toggleFilter('ct')">
+      <i class="ti ti-circle-filled" style="font-size:8px;color:#FFE600;" aria-hidden="true"></i> Cód. Trabalho
+    </div>
+    <div class="filter-btn on" id="f-cc" onclick="toggleFilter('cc')">
+      <i class="ti ti-circle-filled" style="font-size:8px;color:#4A90D9;" aria-hidden="true"></i> Código Civil
+    </div>
+    <div class="filter-btn on" id="f-dl" onclick="toggleFilter('dl')">
+      <i class="ti ti-circle-filled" style="font-size:8px;color:#888;" aria-hidden="true"></i> Decretos-Lei
+    </div>
+    <div class="sep"></div>
+    <div class="tool-btn" onclick="exportGraph()"><i class="ti ti-download" aria-hidden="true"></i> Exportar</div>
+    <div class="tool-btn" onclick="toggleExpand()"><i class="ti ti-arrows-maximize" aria-hidden="true"></i> Expandir</div>
+  </div>
+
+  <div class="main-area">
+
+    <div class="graph-panel" id="graphPanel">
+      <canvas class="graph-canvas" id="graphCanvas"></canvas>
+
+      <div class="stats-bar">
+        <div class="stat-pill"><span class="stat-num">247</span><span class="stat-lbl">documentos legais</span></div>
+        <div class="stat-pill"><span class="stat-num">1,842</span><span class="stat-lbl">referências</span></div>
+        <div class="stat-pill"><span class="stat-num">34</span><span class="stat-lbl">clusters</span></div>
+      </div>
+
+      <div class="legend">
+        <div class="leg-row"><div class="leg-dot" style="background:#FFE600;"></div>Código do Trabalho</div>
+        <div class="leg-row"><div class="leg-dot" style="background:#4A90D9;"></div>Código Civil</div>
+        <div class="leg-row"><div class="leg-dot" style="background:#777;"></div>Decreto-Lei</div>
+        <div class="leg-row"><div class="leg-dot" style="background:#E05A5A;border:1px solid #E05A5A;"></div>Nó central (hub)</div>
+      </div>
+
+      <div class="zoom-ctrl">
+        <div class="z-btn" onclick="zoomIn()"><i class="ti ti-plus" aria-hidden="true"></i></div>
+        <div class="z-btn" onclick="zoomOut()"><i class="ti ti-minus" aria-hidden="true"></i></div>
+        <div class="z-btn" onclick="resetZoom()"><i class="ti ti-refresh" aria-hidden="true"></i></div>
+      </div>
+
+      <div class="node-popup" id="nodePopup">
+        <div class="popup-header">
+          <span class="popup-title" id="popupTitle">Art. 217.º CC</span>
+          <span class="popup-close" onclick="closePopup()"><i class="ti ti-x" aria-hidden="true"></i></span>
+        </div>
+        <div class="popup-body" id="popupBody">
+          Declaração negocial — norma central do Código Civil com maior índice de citações cruzadas no sistema legal português.
+        </div>
+        <div class="popup-stat">
+          <span>Referenciado por</span><span class="popup-stat-val" id="popupRefs">89 leis</span>
+        </div>
+        <div class="popup-stat">
+          <span>Cluster</span><span class="popup-stat-val" id="popupCluster">Contratos</span>
+        </div>
+        <div class="popup-stat">
+          <span>Centralidade</span><span class="popup-stat-val" id="popupCentral">0.94</span>
+        </div>
+        <button class="popup-action" onclick="exploreNode()">Explorar no assistente ↗</button>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="rp-header">
+        <div class="rp-title"><i class="ti ti-message-chatbot" aria-hidden="true"></i> AI assistant</div>
+        <span class="ai-badge">GPT-4o</span>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg-bot">Olá! Sou o assistente legal da EY. Posso ajudar-te a explorar as relações entre o <strong style="color:#FFE600;">Código do Trabalho</strong> e o <strong style="color:#4A90D9;">Código Civil</strong>.
+          <div class="msg-highlight"><i class="ti ti-bulb" style="font-size:12px;" aria-hidden="true"></i> Clica num nó do grafo para ver detalhes e analisar com IA.</div>
+        </div>
+        <div class="msg-user">Quais os artigos do Código Civil mais referenciados pelo Código do Trabalho?</div>
+        <div class="msg-bot">Os artigos com maior índice de citação cruzada são:
+          <div style="margin-top:6px;display:flex;flex-direction:column;gap:4px;">
+            <div style="background:#2A2A3A;border-radius:4px;padding:5px 8px;font-size:11px;display:flex;justify-content:space-between;"><span style="color:#FFE600;">Art. 217.º CC</span><span style="color:#FFE600;font-weight:500;">89×</span></div>
+            <div style="background:#2A2A3A;border-radius:4px;padding:5px 8px;font-size:11px;display:flex;justify-content:space-between;"><span style="color:#ccc;">Art. 334.º CC</span><span style="color:#888;">45×</span></div>
+            <div style="background:#2A2A3A;border-radius:4px;padding:5px 8px;font-size:11px;display:flex;justify-content:space-between;"><span style="color:#ccc;">Art. 762.º CC</span><span style="color:#888;">38×</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <div class="chat-row">
+          <input type="text" placeholder="Pergunta sobre a rede legal..." id="chatIn" />
+          <button class="send-btn" onclick="sendMsg()" aria-label="Enviar"><i class="ti ti-send" style="font-size:14px;" aria-hidden="true"></i></button>
+        </div>
+        <div class="quick-btns">
+          <button class="qb" onclick="quickQ('Mostra conflitos entre CT e CC')">Conflitos CT/CC</button>
+          <button class="qb" onclick="quickQ('Qual o cluster mais denso?')">Clusters</button>
+          <button class="qb" onclick="quickQ('Leis mais influentes')">Influência</button>
+          <button class="qb" onclick="quickQ('Inconsistências legais detetadas')">Inconsistências</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const nodes = [
+  {id:'cc1',x:0.52,y:0.28,r:22,type:'hub',label:'Art.217º\nCC',desc:'Declaração negocial. Norma central com maior índice de citações.',refs:89,cluster:'Contratos',central:'0.94'},
+  {id:'cc2',x:0.68,y:0.42,r:16,type:'cc',label:'Art.334º\nCC',desc:'Abuso de direito. Frequentemente invocado em litígios laborais.',refs:45,cluster:'Direitos',central:'0.71'},
+  {id:'cc3',x:0.58,y:0.60,r:15,type:'cc',label:'Art.762º\nCC',desc:'Boa-fé na execução de contratos.',refs:38,cluster:'Contratos',central:'0.65'},
+  {id:'cc4',x:0.42,y:0.55,r:13,type:'cc',label:'Art.405º\nCC',desc:'Liberdade contratual.',refs:29,cluster:'Contratos',central:'0.51'},
+  {id:'ct1',x:0.22,y:0.22,r:19,type:'ct',label:'Art.53º\nCT',desc:'Garantias de ocupação efetiva do trabalhador.',refs:74,cluster:'Trabalho',central:'0.88'},
+  {id:'ct2',x:0.12,y:0.45,r:15,type:'ct',label:'Art.98º\nCT',desc:'Direito a férias — regime base.',refs:52,cluster:'Trabalho',central:'0.68'},
+  {id:'ct3',x:0.28,y:0.65,r:14,type:'ct',label:'Art.119º\nCT',desc:'Retribuição base e diuturnidades.',refs:41,cluster:'Remuneração',central:'0.59'},
+  {id:'ct4',x:0.18,y:0.72,r:12,type:'ct',label:'Art.340º\nCT',desc:'Cessação do contrato de trabalho.',refs:33,cluster:'Cessação',central:'0.48'},
+  {id:'dl1',x:0.38,y:0.30,r:14,type:'dl',label:'DL47\n2020',desc:'Decreto-Lei n.º 47/2020 — regulação de contratos especiais.',refs:61,cluster:'Regulação',central:'0.72'},
+  {id:'dl2',x:0.30,y:0.48,r:11,type:'dl',label:'DL83\n2021',desc:'Decreto-Lei n.º 83/2021 — trabalho remoto.',refs:28,cluster:'Trabalho',central:'0.44'},
+  {id:'dl3',x:0.62,y:0.22,r:10,type:'dl',label:'DL12\n2019',desc:'Decreto-Lei n.º 12/2019.',refs:19,cluster:'Regulação',central:'0.31'},
+];
+const edges=[
+  ['ct1','cc1'],['ct1','cc2'],['ct1','dl1'],
+  ['ct2','cc1'],['ct2','cc3'],['ct2','dl2'],
+  ['ct3','cc3'],['ct3','cc4'],['ct3','dl2'],
+  ['ct4','cc2'],['ct4','cc4'],
+  ['dl1','cc1'],['dl1','cc3'],
+  ['cc1','cc2'],['cc1','cc3'],
+  ['dl3','cc1'],['dl3','dl1'],
+  ['ct1','ct2'],['ct2','ct3'],
+];
+
+const canvas=document.getElementById('graphCanvas');
+const ctx=canvas.getContext('2d');
+const panel=document.getElementById('graphPanel');
+let scale=1, ox=0, oy=0, highlighted=null, filterState={ct:true,cc:true,dl:true};
+
+const typeColor={ct:'#FFE600',cc:'#4A90D9',dl:'#777777',hub:'#E05A5A'};
+const typeDim={ct:'#7A6F00',cc:'#1A3A5C',dl:'#333',hub:'#6A1A1A'};
+
+function getPos(n){
+  const W=canvas.width, H=canvas.height;
+  return {x:n.x*W*scale+ox, y:n.y*H*scale+oy};
+}
+
+function draw(){
+  const W=canvas.width=panel.clientWidth;
+  const H=canvas.height=panel.clientHeight;
+  ctx.clearRect(0,0,W,H);
+
+  const visibleIds=new Set(nodes.filter(n=>{
+    if(n.type==='hub') return filterState.cc;
+    return filterState[n.type];
+  }).map(n=>n.id));
+
+  edges.forEach(([a,b])=>{
+    if(!visibleIds.has(a)||!visibleIds.has(b)) return;
+    const na=nodes.find(n=>n.id===a), nb=nodes.find(n=>n.id===b);
+    const pa=getPos(na), pb=getPos(nb);
+    ctx.beginPath();
+    ctx.moveTo(pa.x,pa.y);
+    ctx.lineTo(pb.x,pb.y);
+    const isHl = highlighted && (highlighted===a||highlighted===b);
+    ctx.strokeStyle=isHl?'#FFE60066':'#FFFFFF18';
+    ctx.lineWidth=isHl?1.5:0.8;
+    ctx.stroke();
+  });
+
+  nodes.forEach(n=>{
+    if(!visibleIds.has(n.id)) return;
+    const p=getPos(n);
+    const r=n.r*(0.7+scale*0.3);
+    const isHl=highlighted===n.id;
+    const col=typeColor[n.type];
+    const dim=typeDim[n.type];
+
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,r+(isHl?3:0),0,Math.PI*2);
+    ctx.fillStyle=isHl?col:(col+'AA');
+    ctx.fill();
+    ctx.lineWidth=isHl?2:0.5;
+    ctx.strokeStyle=isHl?'#fff':'#ffffff33';
+    ctx.stroke();
+
+    ctx.fillStyle=n.type==='ct'?'#1A1A00':'#fff';
+    ctx.font=`${Math.round(9+r*0.12)}px sans-serif`;
+    ctx.textAlign='center';
+    ctx.textBaseline='middle';
+    const lines=n.label.split('\n');
+    lines.forEach((line,i)=>{
+      ctx.fillText(line,p.x,p.y+(i-0.5)*(r*0.5));
+    });
+  });
+}
+
+canvas.addEventListener('click',e=>{
+  const rect=canvas.getBoundingClientRect();
+  const mx=e.clientX-rect.left, my=e.clientY-rect.top;
+  let hit=null;
+  nodes.forEach(n=>{
+    const p=getPos(n);
+    const r=n.r*(0.7+scale*0.3)+4;
+    if(Math.hypot(mx-p.x,my-p.y)<r) hit=n;
+  });
+  if(hit){
+    highlighted=hit.id;
+    showPopup(hit);
+  } else {
+    highlighted=null;
+    closePopup();
+  }
+  draw();
+});
+
+function showPopup(n){
+  document.getElementById('popupTitle').textContent=n.label.replace('\n',' ');
+  document.getElementById('popupBody').textContent=n.desc;
+  document.getElementById('popupRefs').textContent=n.refs+' leis';
+  document.getElementById('popupCluster').textContent=n.cluster;
+  document.getElementById('popupCentral').textContent=n.central;
+  document.getElementById('nodePopup').style.display='block';
+}
+
+function closePopup(){document.getElementById('nodePopup').style.display='none'; highlighted=null; draw();}
+
+function exploreNode(){
+  const t=document.getElementById('popupTitle').textContent;
+  addMsg('user','Explica as implicações legais de '+t+' e as suas conexões na rede.');
+  addMsg('bot','A analisar '+t+' na rede legal... Este artigo apresenta conexões de alta centralidade, formando um hub primário no cluster <strong style="color:#FFE600;">Contratos</strong>. Recomendo explorar as suas dependências diretas no grafo.');
+  closePopup();
+}
+
+function toggleFilter(type){
+  filterState[type]=!filterState[type];
+  const el=document.getElementById('f-'+type);
+  el.classList.toggle('on',filterState[type]);
+  draw();
+}
+
+function zoomIn(){scale=Math.min(scale*1.25,3);draw();}
+function zoomOut(){scale=Math.max(scale/1.25,0.5);draw();}
+function resetZoom(){scale=1;ox=0;oy=0;draw();}
+function exportGraph(){addMsg('bot','A gerar exportação SVG da rede legal atual... Pronto para download.');}
+function toggleExpand(){addMsg('bot','Modo expandido disponível na versão completa da aplicação.');}
+
+let drag=false, lastX=0, lastY=0;
+canvas.addEventListener('mousedown',e=>{drag=true;lastX=e.clientX;lastY=e.clientY;});
+canvas.addEventListener('mousemove',e=>{
+  if(!drag) return;
+  ox+=e.clientX-lastX; oy+=e.clientY-lastY;
+  lastX=e.clientX; lastY=e.clientY;
+  draw();
+});
+canvas.addEventListener('mouseup',()=>drag=false);
+canvas.addEventListener('mouseleave',()=>drag=false);
+
+document.getElementById('searchInput').addEventListener('input',function(){
+  const q=this.value.toLowerCase().trim();
+  if(!q){highlighted=null;draw();return;}
+  const match=nodes.find(n=>n.label.toLowerCase().includes(q)||n.cluster.toLowerCase().includes(q));
+  if(match){highlighted=match.id;draw();}
+});
+
+function addMsg(type,html){
+  const area=document.getElementById('chatMessages');
+  const d=document.createElement('div');
+  d.className=type==='user'?'msg-user':'msg-bot';
+  d.innerHTML=html;
+  area.appendChild(d);
+  area.scrollTop=area.scrollHeight;
+}
+
+function sendMsg(){
+  const inp=document.getElementById('chatIn');
+  const val=inp.value.trim();
+  if(!val) return;
+  addMsg('user',val);
+  inp.value='';
+  setTimeout(()=>{
+    addMsg('bot','A consultar a rede legal portuguesa... Para respostas precisas, o backend de GraphRAG precisa de estar ligado. <span style="color:#888;font-size:10px;">— modo demo</span>');
+  },600);
+}
+
+function quickQ(q){
+  document.getElementById('chatIn').value=q;
+  sendMsg();
+}
+
+document.getElementById('chatIn').addEventListener('keydown',e=>{if(e.key==='Enter')sendMsg();});
+
+window.addEventListener('load',()=>{draw();});
+window.addEventListener('resize',draw);
+</script>
