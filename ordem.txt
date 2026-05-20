@@ -1,0 +1,7 @@
+pip install -r requirements.txt
+
+py main.py
+
+py index_pdfs.py
+
+streamlit run app.py

@@ -1,0 +1,10 @@
+playwright
+streamlit
+chromadb
+pymupdf
+ollama
+tqdm
+pandas
+networkx
+plotly
+scipy

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LusoLawBot</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body data-theme="dark">
+
+    <div class="app-container">
+        
+        <!-- BARRA LATERAL ESQUERDA -->
+        <aside class="left-sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <img src="logo.jpeg" alt="LusoLawBot Logo" class="sidebar-logo-img">
+                </div>
+                <h2>LusoLawBot</h2>
+            </div>
+
+            <nav class="main-nav">
+                <a href="#" class="nav-item active">
+                    <i data-feather="message-square"></i>
+                    <span>Chat</span>
+                </a>
+            </nav>
+
+            <div class="history-section">
+                <h3>HISTÓRICO</h3>
+                <!-- Lista de histórico vazia para já -->
+                <div class="history-list">
+                    <p class="history-empty">Sem histórico recente.</p>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <button class="icon-btn" id="theme-toggle" title="Alternar Tema">
+                    <i data-feather="sun" id="theme-icon"></i>
+                </button>
+                <div class="language-selector">PT</div>
+                <button class="icon-btn profile-shortcut">E</button>
+            </div>
+        </aside>
+
+        <!-- ÁREA PRINCIPAL DE CHAT -->
+        <main class="main-content">
+            <!-- Cabeçalho -->
+            <header class="main-header">
+                <div class="header-left"></div>
+                <div class="header-right">
+                    <!-- Botão para abrir o painel direito -->
+                    <button id="toggle-right-sidebar" class="tools-btn">
+                        <i data-feather="sidebar"></i> Quiz & Grafo
+                    </button>
+                    <!-- Perfil -->
+                    <div class="profile-dropdown-container">
+                        <button class="profile-btn" id="profile-btn">
+                            <span class="status-dot"></span>
+                            Estudante
+                            <i data-feather="chevron-down"></i>
+                        </button>
+                        
+                        <!-- Modal Perfil -->
+                        <div class="profile-modal" id="profile-modal">
+                            <div class="modal-header">
+                                <h4>Perfil de utilizador</h4>
+                                <button class="close-btn" id="close-modal"><i data-feather="x"></i></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="profile-option">
+                                    <i data-feather="user"></i>
+                                    <div>
+                                        <strong>Utilizador</strong>
+                                        <span>Chatbot e grafo</span>
+                                    </div>
+                                </div>
+                                <div class="profile-option active">
+                                    <i data-feather="book-open"></i>
+                                    <div>
+                                        <strong>Estudante / Investigador</strong>
+                                        <span>Chat + quiz + grafo + ficheiros</span>
+                                    </div>
+                                    <i data-feather="check" class="check-icon"></i>
+                                </div>
+                                <div class="profile-option">
+                                    <i data-feather="briefcase"></i>
+                                    <div>
+                                        <strong>Profissional / Corporativo</strong>
+                                        <span>Respostas avançadas com citações</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Zona de Conversa -->
+            <div class="chat-area">
+                <div class="welcome-container">
+                    <div class="big-logo">
+                        <img src="logo.jpeg" alt="LusoLawBot Logo" class="welcome-logo-img">
+                    </div>
+                    <h1>Olá, como posso ajudar?</h1>
+                    <p>Faça uma pergunta sobre o Código do Trabalho ou Código Civil.</p>
+
+                    <div class="suggestions-grid">
+                        <div class="suggestion-card">
+                            <span class="card-tag">Férias</span>
+                            <p>Quantos dias de férias no 1.º ano?</p>
+                        </div>
+                        <div class="suggestion-card">
+                            <span class="card-tag">Despedimento</span>
+                            <p>O que é justa causa de despedimento?</p>
+                        </div>
+                        <div class="suggestion-card">
+                            <span class="card-tag">Horas extra</span>
+                            <p>Posso ser obrigado a fazer horas extra?</p>
+                        </div>
+                        <div class="suggestion-card">
+                            <span class="card-tag">Salário mínimo</span>
+                            <p>Qual o salário mínimo em 2024?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input do Chat -->
+            <div class="chat-input-container">
+                <div class="input-wrapper">
+                    <input type="text" placeholder="Pesquise uma lei ou faça uma pergunta...">
+                    <button class="send-btn">
+                        <i data-feather="send"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- BARRA LATERAL DIREITA (QUIZ E GRAFO) -->
+        <aside class="right-sidebar" id="right-sidebar">
+            <div class="right-sidebar-header">
+                <h3>Ferramentas</h3>
+                <button class="icon-btn" id="close-right-sidebar"><i data-feather="x"></i></button>
+            </div>
+            
+            <div class="tabs-container">
+                <button class="tab-btn active" data-target="quiz-panel">Quiz</button>
+                <button class="tab-btn" data-target="grafo-panel">Grafo</button>
+            </div>
+
+            <div class="tab-content active" id="quiz-panel">
+                <div class="tool-placeholder">
+                    <i data-feather="help-circle" class="large-icon"></i>
+                    <h4>Modo Quiz</h4>
+                    <p>Teste os seus conhecimentos jurídicos aqui.</p>
+                    <button class="start-btn">Iniciar Quiz</button>
+                </div>
+            </div>
+
+            <div class="tab-content" id="grafo-panel">
+                <div class="tool-placeholder">
+                    <i data-feather="share-2" class="large-icon"></i>
+                    <h4>Grafo de Conhecimento</h4>
+                    <p>Explore as relações entre os artigos do código.</p>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

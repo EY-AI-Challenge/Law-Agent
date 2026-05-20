@@ -1,0 +1,13 @@
+dre_temas_output/
+chroma_db/
+legal_csv_output/
+citations_pdf_to_pdf.csv
+
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+.DS_Store
+Thumbs.db
